@@ -7,5 +7,5 @@ public interface Function {
     public void printFunc();
     public void asignateVariablesValues();
     public List<String> listVariables();
-    public List<Variable> getVariables(List<Variable> aux);
+    public List<Variable> setVariables(List<Variable> aux);
 }

@@ -1,7 +1,6 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.Operations.Add;
-import edu.austral.ingsis.math.Operations.Div;
+import edu.austral.ingsis.math.Operations.*;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -21,10 +20,13 @@ public class ListVariablesTest {
     @Test
     public void shouldListVariablesFunction1() {
         List<String> result;
+
         Double number1 = 6.0;
         FunctionImpl function1 = new FunctionImpl(number1, null, null);
+
         Double number2 = 1.0;
         FunctionImpl function2 = new FunctionImpl(number2, function1, new Add());
+
         result = function2.listVariables();
         assertThat(result, empty());
     }
@@ -35,10 +37,13 @@ public class ListVariablesTest {
     @Test
     public void shouldListVariablesFunction2() {
         List<String> result;
+
         Variable variable1 = new Variable("div", null);
         FunctionImpl function1 = new FunctionImpl(variable1, null, null);
+
         Double number2 = 12.0;
         FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
+
         result = function2.listVariables();
         assertThat(result, containsInAnyOrder("div"));
     }
@@ -48,8 +53,20 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction3() {
-        final List<String> result = Collections.emptyList();
+        List<String> result;
 
+        Variable variable1 = new Variable("x", null);
+        FunctionImpl function1 = new FunctionImpl(variable1, null, null);
+
+        Double number2 = 9.0;
+        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
+
+        Variable variable3 = new Variable("y", null);
+        FunctionImpl function3 = new FunctionImpl(variable3, function2, new Mul());
+
+        System.out.println(function1.getVariables().size());//
+
+        result = function3.listVariables();
         assertThat(result, containsInAnyOrder("x", "y"));
     }
 
@@ -58,8 +75,18 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction4() {
-        final List<String> result = Collections.emptyList();
+        List<String> result;
 
+        Variable variable1 = new Variable("a", null);
+        FunctionImpl function1 = new FunctionImpl(variable1, null, null);
+
+        Double number2 = 27.0;
+        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
+
+        Variable variable3 = new Variable("b", null);
+        FunctionImpl function3 = new FunctionImpl(variable3, function2, new Pow());
+
+        result = function3.listVariables();
         assertThat(result, containsInAnyOrder("a", "b"));
     }
 
@@ -68,8 +95,18 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction5() {
-        final List<String> result = Collections.emptyList();
+        List<String> result;
 
+        Double number1 = 2.0;
+        FunctionImpl function1 = new FunctionImpl(number1, null, null);
+
+        Double number2 = 1.0;
+        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
+
+        Variable variable3 = new Variable("z", null);
+        FunctionImpl function3 = new FunctionImpl(variable3, function2, new Pow());
+
+        result = function3.listVariables();
         assertThat(result, containsInAnyOrder("z"));
     }
 
@@ -78,8 +115,19 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction6() {
-        final List<String> result = Collections.emptyList();
+        List<String> result;
 
+        Double number1 = 8.0;
+        FunctionImpl function1 = new FunctionImpl(number1, null, null);
+
+        Variable variable1 = new Variable("value", null);
+        FunctionImpl function2 = new FunctionImpl(variable1, null, new Mod());
+
+        Variable variable2 = null;
+        FunctionImpl function3 = new FunctionImpl(variable2, null, new Sub());
+
+
+        result = function3.listVariables();
         assertThat(result, containsInAnyOrder("value"));
     }
 

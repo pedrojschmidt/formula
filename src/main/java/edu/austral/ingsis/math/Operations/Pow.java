@@ -8,7 +8,7 @@ public class Pow extends Operation {
 
     private static final String name = "^";
 
-    public Pow(String name) {
+    public Pow() {
         super(name);
     }
 
