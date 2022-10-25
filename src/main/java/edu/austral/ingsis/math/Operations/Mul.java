@@ -5,7 +5,9 @@ import edu.austral.ingsis.math.Variable;
 
 public class Mul extends Operation {
 
-    public Mul(String name) {
+    private static final String name = "*";
+
+    public Mul() {
         super(name);
     }
 

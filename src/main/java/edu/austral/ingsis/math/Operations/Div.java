@@ -5,7 +5,9 @@ import edu.austral.ingsis.math.Variable;
 
 public class Div extends Operation {
 
-    public Div(String name) {
+    private static final String name = "/";
+
+    public Div() {
         super(name);
     }
 

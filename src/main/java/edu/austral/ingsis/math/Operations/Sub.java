@@ -5,7 +5,9 @@ import edu.austral.ingsis.math.Variable;
 
 public class Sub extends Operation {
 
-    public Sub(String name) {
+    private static final String name = "-";
+
+    public Sub() {
         super(name);
     }
 

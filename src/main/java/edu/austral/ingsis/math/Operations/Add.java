@@ -5,8 +5,9 @@ import edu.austral.ingsis.math.Variable;
 
 public class Add extends Operation {
 
+    private static final String name = "+";
 
-    public Add(String name) {
+    public Add() {
         super(name);
     }
 

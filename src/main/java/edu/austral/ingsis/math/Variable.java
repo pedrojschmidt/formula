@@ -5,7 +5,7 @@ public class Variable {
     private String name;
     private Double value;
 
-    public Variable(String name, double value) {
+    public Variable(String name, Double value) {
         this.name = name;
         this.value = value;
     }
@@ -14,7 +14,7 @@ public class Variable {
         this.name = name;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

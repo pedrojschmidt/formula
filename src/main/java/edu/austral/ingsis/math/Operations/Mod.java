@@ -5,7 +5,9 @@ import edu.austral.ingsis.math.Variable;
 
 public class Mod extends Operation {
 
-    public Mod(String name) {
+    private static final String name = "|%s|"; //String.format(name, value)
+
+    public Mod() {
         super(name);
     }
 
