@@ -3,31 +3,30 @@ package edu.austral.ingsis.math.Operations;
 import edu.austral.ingsis.math.Operation;
 import edu.austral.ingsis.math.Variable;
 
-public class Add extends Operation {
+public class Pow extends Operation {
 
-
-    public Add(String name) {
+    public Pow(String name) {
         super(name);
     }
 
     @Override
     public double makeOperation(Variable var1, Variable var2) {
-        return var1.getValue() + var2.getValue();
+        return 0;
     }
 
     @Override
-    public double makeOperation(Variable var1, Double num2) {
-        return var1.getValue() + num2;
+    public double makeOperation(Variable base, Double exp) {
+        return Math.pow(base.getValue(), exp);
     }
 
     @Override
-    public double makeOperation(Double num1, Variable var2) {
-        return num1 + var2.getValue();
+    public double makeOperation(Double base, Variable exp) {
+        return Math.pow(base, exp.getValue());
     }
 
     @Override
     public double makeOperation(Double num1, Double num2) {
-        return num1 + num2;
+        return 0;
     }
 
     @Override

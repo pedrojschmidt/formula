@@ -28,4 +28,14 @@ public class Sqr extends Operation {
     public double makeOperation(Double num1, Double num2) {
         return 0;
     }
+
+    @Override
+    public double makeOperation(Variable var) {
+        return Math.sqrt(var.getValue());
+    }
+
+    @Override
+    public double makeOperation(Double num) {
+        return Math.sqrt(num);
+    }
 }

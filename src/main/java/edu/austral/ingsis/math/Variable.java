@@ -3,7 +3,7 @@ package edu.austral.ingsis.math;
 public class Variable {
 
     private String name;
-    private double value;
+    private Double value;
 
     public Variable(String name, double value) {
         this.name = name;
@@ -22,7 +22,7 @@ public class Variable {
         return name;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 }
