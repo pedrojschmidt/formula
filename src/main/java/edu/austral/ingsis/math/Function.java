@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface Function {
 
-    public void printFunc();
+    public double calculateValue();
+    public String printFunc();
     public void asignateVariablesValues();
     public List<String> listVariables();
     public List<Variable> setVariables(List<Variable> aux);

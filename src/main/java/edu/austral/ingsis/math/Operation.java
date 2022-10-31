@@ -8,10 +8,10 @@ public abstract class Operation implements OperationInterface {
         this.name = name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
-
+    @Override
     public String getName() {
         return name;
     }

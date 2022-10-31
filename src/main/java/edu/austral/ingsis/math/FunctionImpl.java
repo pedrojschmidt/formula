@@ -26,16 +26,29 @@ public class FunctionImpl implements Function{
         this.variables = setVariables(new ArrayList<>());
     }
 
-    @Override
-    public void printFunc() {
+    public double getVarValue(){
+        return variable.calculateValue();
+    }
 
+    @Override
+    public double calculateValue(){
+        if (innerFunction != null) {
+            return operationWithInnerFunction.makeOperation(this);
+        } else {
+            return variable.calculateValue();
+        }
+    }
+
+    @Override
+    public String printFunc() {
+        return variable.printFunc() + operationWithInnerFunction.getName() + innerFunction.printFunc();
     }
 
     @Override
     public void asignateVariablesValues() {
         Scanner scanner = new Scanner(System.in);
         for (Variable variable: variables) {
-            System.out.println("Ingrese el valor de " + variable.getName() + ": ");
+            System.out.println("Ingrese el valor de " + variable.printFunc() + ": ");
             double value = scanner.nextDouble();
             variable.setValue(value);
         }
@@ -45,7 +58,7 @@ public class FunctionImpl implements Function{
     public List<String> listVariables() {
         List<String> aux = new ArrayList<>();
         for (Variable variable: variables) {
-            aux.add(variable.getName());
+            aux.add(variable.printFunc());
         }
         return aux;
     }
@@ -77,5 +90,9 @@ public class FunctionImpl implements Function{
 
     public Variable getVariable() {
         return variable;
+    }
+
+    public FunctionImpl getInnerFunction() {
+        return innerFunction;
     }
 }
