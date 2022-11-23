@@ -1,6 +1,9 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.Operations.*;
 import org.junit.Test;
+
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -13,8 +16,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction1() {
-        final Double result = 4d;
-
+        Function func1 = new Number(1.0);
+        Function func2 = new Variable("x");
+        Function add = new Add(func1, func2);
+        final Double result = add.calculateValue(Map.of("x", 3.0));
         assertThat(result, equalTo(4d));
     }
 
@@ -23,8 +28,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction2() {
-        final Double result = 3d;
-
+        Function func1 = new Number(12.0);
+        Function func2 = new Variable("div");
+        Function div = new Div(func1, func2);
+        final Double result = div.calculateValue(Map.of("div", 4.0));
         assertThat(result, equalTo(3d));
     }
 
@@ -33,8 +40,12 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction3() {
-        final Double result = 12d;
-
+        Function func1 = new Number(9.0);
+        Function func2 = new Variable("x");
+        Function div = new Div(func1, func2);
+        Function func3 = new Variable("y");
+        Function mul = new Mul(div, func3);
+        final Double result = mul.calculateValue(Map.of("x", 3.0, "y", 4.0));
         assertThat(result, equalTo(12d));
     }
 
@@ -43,8 +54,12 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction4() {
-        final Double result = 27d;
-
+        Function func1 = new Number(27.0);
+        Function func2 = new Variable("a");
+        Function div = new Div(func1, func2);
+        Function func3 = new Variable("b");
+        Function mul = new Pow(div, func3);
+        final Double result = mul.calculateValue(Map.of("a", 9.0, "b", 3.0));
         assertThat(result, equalTo(27d));
     }
 
@@ -53,8 +68,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction5() {
-        final Double result = 6d;
-
+        Function func1 = new Variable("z");
+        Function func2 = new Div(new Number(1.0), new Number(2.0));
+        Function pow = new Pow(func1, func2);
+        final Double result = pow.calculateValue(Map.of("z", 36.0));
         assertThat(result, equalTo(6d));
     }
 
@@ -63,8 +80,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction6() {
-        final Double result = 0d;
-
+        Function func1 = new Abs(new Variable("value"));
+        Function func2 = new Number(8.0);
+        Function sub = new Sub(func1, func2);
+        final Double result = sub.calculateValue(Map.of("value", 8.0));
         assertThat(result, equalTo(0d));
     }
 
@@ -73,8 +92,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction7() {
-        final Double result = 0d;
-
+        Function func1 = new Abs(new Variable("value"));
+        Function func2 = new Number(8.0);
+        Function sub = new Sub(func1, func2);
+        final Double result = sub.calculateValue(Map.of("value", 8.0));
         assertThat(result, equalTo(0d));
     }
 
@@ -83,8 +104,12 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction8() {
-        final Double result = 24d;
-
+        Function func1 = new Number(5.0);
+        Function func2 = new Variable("i");
+        Function sub = new Sub(func1, func2);
+        Function func3 = new Number(8.0);
+        Function mul = new Mul(sub, func3);
+        final Double result = mul.calculateValue(Map.of("i", 2.0));
         assertThat(result, equalTo(24d));
     }
 }

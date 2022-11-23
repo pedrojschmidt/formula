@@ -17,15 +17,10 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction1() {
-        List<String> result;
-
-        Double number1 = 6.0;
-        FunctionImpl function1 = new FunctionImpl(number1, null, null);
-
-        Double number2 = 1.0;
-        FunctionImpl function2 = new FunctionImpl(number2, function1, new Add());
-
-        result = function2.listVariables();
+        Function func1 = new Number(1.0);
+        Function func2 = new Number(6.0);
+        Function func3 = new Add(func1, func2);
+        final List<String> result = func3.listVariables(List.of());
         assertThat(result, empty());
     }
 
@@ -34,15 +29,10 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction2() {
-        List<String> result;
-
-        Variable variable1 = new Variable("div", null);
-        FunctionImpl function1 = new FunctionImpl(variable1, null, null);
-
-        Double number2 = 12.0;
-        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
-
-        result = function2.listVariables();
+        Function func1 = new Number(12.0);
+        Function func2 = new Variable("div");
+        Function func3 = new Div(func1, func2);
+        final List<String> result = func3.listVariables(List.of());
         assertThat(result, containsInAnyOrder("div"));
     }
 
@@ -51,20 +41,12 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction3() {
-        List<String> result;
-
-        Variable variable1 = new Variable("x", null);
-        FunctionImpl function1 = new FunctionImpl(variable1, null, null);
-
-        Double number2 = 9.0;
-        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
-
-        Variable variable3 = new Variable("y", null);
-        FunctionImpl function3 = new FunctionImpl(variable3, function2, new Mul());
-
-        System.out.println(function1.getVariables().size());//
-
-        result = function3.listVariables();
+        Function func1 = new Number(9.0);
+        Function func2 = new Variable("x");
+        Function func3 = new Div(func1, func2);
+        Function func4 = new Variable("y");
+        Function func5 = new Mul(func3, func4);
+        final List<String> result = func5.listVariables(List.of());
         assertThat(result, containsInAnyOrder("x", "y"));
     }
 
@@ -73,18 +55,12 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction4() {
-        List<String> result;
-
-        Variable variable1 = new Variable("a", null);
-        FunctionImpl function1 = new FunctionImpl(variable1, null, null);
-
-        Double number2 = 27.0;
-        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
-
-        Variable variable3 = new Variable("b", null);
-        FunctionImpl function3 = new FunctionImpl(variable3, function2, new Pow());
-
-        result = function3.listVariables();
+        Function func1 = new Number(27.0);
+        Function func2 = new Variable("a");
+        Function func3 = new Div(func1, func2);
+        Function func4 = new Variable("b");
+        Function func5 = new Pow(func3, func4);
+        final List<String> result = func5.listVariables(List.of());
         assertThat(result, containsInAnyOrder("a", "b"));
     }
 
@@ -93,18 +69,12 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction5() {
-        List<String> result;
-
-        Double number1 = 2.0;
-        FunctionImpl function1 = new FunctionImpl(number1, null, null);
-
-        Double number2 = 1.0;
-        FunctionImpl function2 = new FunctionImpl(number2, function1, new Div());
-
-        Variable variable3 = new Variable("z", null);
-        FunctionImpl function3 = new FunctionImpl(variable3, function2, new Pow());
-
-        result = function3.listVariables();
+        Function func1 = new Variable("z");
+        Function func2 = new Number(2.0);
+        Function func3 = new Number(1.0);
+        Function func4 = new Div(func3, func2);
+        Function func5 = new Pow(func1, func4);
+        final List<String> result = func5.listVariables(List.of());
         assertThat(result, containsInAnyOrder("z"));
     }
 
@@ -113,19 +83,11 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction6() {
-        List<String> result;
-
-        Double number1 = 8.0;
-        FunctionImpl function1 = new FunctionImpl(number1, null, null);
-
-        Variable variable1 = new Variable("value", null);
-        FunctionImpl function2 = new FunctionImpl(variable1, null, new Abs());
-
-        Variable variable2 = null;
-        FunctionImpl function3 = new FunctionImpl(variable2, null, new Sub());
-
-
-        result = function3.listVariables();
+        Function func1 = new Variable("value");
+        Function func2 = new Number(8.0);
+        Function func3 = new Abs(func1);
+        Function func4 = new Sub(func3, func2);
+        final List<String> result = func4.listVariables(List.of());
         assertThat(result, containsInAnyOrder("value"));
     }
 
@@ -134,8 +96,11 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction7() {
-        final List<String> result = Collections.emptyList();
-
+        Function func1 = new Variable("value");
+        Function func2 = new Number(8.0);
+        Function func3 = new Abs(func1);
+        Function func4 = new Sub(func3, func2);
+        final List<String> result = func4.listVariables(List.of());
         assertThat(result, containsInAnyOrder("value"));
     }
 
@@ -144,8 +109,12 @@ public class ListVariablesTest {
      */
     @Test
     public void shouldListVariablesFunction8() {
-        final List<String> result = Collections.emptyList();
-
+        Function func1 = new Number(5.0);
+        Function func2 = new Variable("i");
+        Function func3 = new Sub(func1, func2);
+        Function func4 = new Number(8.0);
+        Function func5 = new Mul(func3, func4);
+        final List<String> result = func5.listVariables(List.of());
         assertThat(result, containsInAnyOrder("i"));
     }
 }

@@ -18,12 +18,11 @@ public class Number implements Function{
 
     @Override
     public String printFunc() {
-//        if (number == Math.floor(number)) {
-//            return String.format("%d", number.intValue());
-//        } else {
-//            return String.format("%s", number);
-//        }
-        return String.format("%s", number);
+        if (number == Math.floor(number)) {
+            return String.format("%d", number.intValue());
+        } else {
+            return String.format("%s", number);
+        }
     }
 
     @Override
