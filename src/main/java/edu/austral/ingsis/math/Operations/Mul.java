@@ -1,20 +1,25 @@
 package edu.austral.ingsis.math.Operations;
 
 import edu.austral.ingsis.math.Function;
-import edu.austral.ingsis.math.FunctionImpl;
-import edu.austral.ingsis.math.Operation;
-import edu.austral.ingsis.math.Variable;
 
-public class Mul extends Operation {
+import java.util.List;
+import java.util.Map;
 
-    private static final String name = " * ";
+public class Mul implements Function {
 
-    public Mul() {
-        super(name);
+
+    @Override
+    public double calculateValue(Map<String, Double> variables) {
+        return 0;
     }
 
     @Override
-    public double makeOperation(FunctionImpl function) {
-        return 0;
+    public String printFunc() {
+        return null;
+    }
+
+    @Override
+    public List<String> listVariables(List<String> variablesNames) {
+        return null;
     }
 }

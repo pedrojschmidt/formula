@@ -4,10 +4,8 @@ import edu.austral.ingsis.math.Operations.*;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -121,7 +119,7 @@ public class ListVariablesTest {
         FunctionImpl function1 = new FunctionImpl(number1, null, null);
 
         Variable variable1 = new Variable("value", null);
-        FunctionImpl function2 = new FunctionImpl(variable1, null, new Mod());
+        FunctionImpl function2 = new FunctionImpl(variable1, null, new Abs());
 
         Variable variable2 = null;
         FunctionImpl function3 = new FunctionImpl(variable2, null, new Sub());

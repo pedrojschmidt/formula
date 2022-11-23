@@ -1,32 +1,22 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.Operations.Mod;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Variable implements Function{
 
     private String name;
-    private Double value;
 
-    //Incluye numeros (se les pasa el name igual al value)
-    public Variable(String name, Double value) {
+    public Variable(String name){
         this.name = name;
-        this.value = value;
-    }
-
-    public Variable(String name) {
-        this.name = name;
-        this.value = null;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
     }
 
     @Override
-    public double calculateValue() {
-        return value;
+    public double calculateValue(Map<String, Double> variables) {
+        return variables.get(name);
     }
 
     @Override
@@ -35,17 +25,9 @@ public class Variable implements Function{
     }
 
     @Override
-    public void asignateVariablesValues() {
-
-    }
-
-    @Override
-    public List<String> listVariables() {
-        return null;
-    }
-
-    @Override
-    public List<Variable> setVariables(List<Variable> aux) {
-        return null;
+    public List<String> listVariables(List<String> variablesNames) {
+        List<String> aux = new ArrayList<>();
+        aux.add(name);
+        return Stream.concat(variablesNames.stream(), aux.stream()).collect(Collectors.toList());
     }
 }

@@ -5,22 +5,26 @@ import edu.austral.ingsis.math.Function;
 import java.util.List;
 import java.util.Map;
 
-//Cuando se le pasa como exponente 1/2 funciona como raiz cuadrada
-public class Pow implements Function {
+public class Abs implements Function {
 
+    private Function func;
+
+    public Abs(Function func) {
+        this.func = func;
+    }
 
     @Override
     public double calculateValue(Map<String, Double> variables) {
-        return 0;
+        return Math.abs(func.calculateValue(variables));
     }
 
     @Override
     public String printFunc() {
-        return null;
+        return "|" + func.printFunc() + "|";
     }
 
     @Override
     public List<String> listVariables(List<String> variablesNames) {
-        return null;
+        return func.listVariables(variablesNames);
     }
 }

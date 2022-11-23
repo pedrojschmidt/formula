@@ -1,12 +1,11 @@
 package edu.austral.ingsis.math;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Function {
 
-    public double calculateValue();
+    public double calculateValue(Map<String, Double> variables);
     public String printFunc();
-    public void asignateVariablesValues();
-    public List<String> listVariables();
-    public List<Variable> setVariables(List<Variable> aux);
+    public List<String> listVariables(List<String> variablesNames);
 }

@@ -1,19 +1,25 @@
 package edu.austral.ingsis.math.Operations;
 
-import edu.austral.ingsis.math.FunctionImpl;
-import edu.austral.ingsis.math.Operation;
+import edu.austral.ingsis.math.Function;
 
-public class Add extends Operation {
+import java.util.List;
+import java.util.Map;
 
-    private static final String name = " + ";
-
-    public Add() {
-        super(name);
-    }
+public class Add implements Function {
 
 
     @Override
-    public double makeOperation(FunctionImpl function) {
-        return function.getVarValue() + function.getInnerFunction().calculateValue();
+    public double calculateValue(Map<String, Double> variables) {
+        return 0;
+    }
+
+    @Override
+    public String printFunc() {
+        return null;
+    }
+
+    @Override
+    public List<String> listVariables(List<String> variablesNames) {
+        return null;
     }
 }
