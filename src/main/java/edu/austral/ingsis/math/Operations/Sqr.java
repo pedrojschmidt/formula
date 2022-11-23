@@ -7,28 +7,28 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Add implements Function {
+public class Sqr implements Function {
 
     private Function func1;
     private Function func2;
 
-    public Add(Function func1, Function func2) {
+    public Sqr(Function func1, Function func2) {
         this.func1 = func1;
         this.func2 = func2;
     }
 
     @Override
     public double calculateValue(Map<String, Double> variables) {
-        return func1.calculateValue(variables) + func2.calculateValue(variables);
+        return Math.pow(func1.calculateValue(variables), 1/func2.calculateValue(variables));
     }
 
     @Override
     public String printFunc() {
-        return func1.printFunc() + " + " + func2.printFunc();
+        return func1.printFunc() + " ^^ " + func2.printFunc();
     }
 
     @Override
     public List<String> listVariables(List<String> variablesNames) {
-        return List.of();
+        return Stream.concat(func1.listVariables(variablesNames).stream(), func2.listVariables(variablesNames).stream()).collect(Collectors.toList());
     }
 }
